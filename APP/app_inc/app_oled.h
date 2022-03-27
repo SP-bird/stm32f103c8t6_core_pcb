@@ -3,4 +3,5 @@
 
 #include "oled.h"
 void app_oled_test(void);
+void app_oled_test1(int num);
 #endif

@@ -42,6 +42,7 @@
 	
 #if OLED_CONFIG
 	OLED_Init();			//≥ı ºªØOLED  
+	app_oled_test();
 #endif
 //	TIM_SetCompare3(TIM4,500);
 
@@ -54,14 +55,17 @@
 		key_value = KEY_Scan(0);
 		if (key_value == KEY0_PRES) {
 			led_toggle_mode++;
-			led_toggle_mode = led_toggle_mode % 10;
-			led_toggle_time_ms = 250 * led_toggle_mode;			
+			led_toggle_mode = led_toggle_mode % 9;
+			led_toggle_time_ms = 250 * led_toggle_mode;	
+		#if OLED_CONFIG
+			app_oled_test1(led_toggle_mode);
+		#endif
 		}
 
 		app_led_flash(led_toggle_time_ms);
-	
+		
 	#if OLED_CONFIG
-		app_oled_test();
+//		app_oled_test();
 	#endif
 		
 	#if WIFI_CONFIG
